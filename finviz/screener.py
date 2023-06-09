@@ -179,7 +179,7 @@ class Screener(object):
         table_list = [self.headers]
 
         for row in self.data:
-            table_list.append([row[col] or "" for col in self.headers])
+            table_list.append([row.get(col, f"NaN") for col in self.headers])
 
         return create_table_string(table_list)
 
