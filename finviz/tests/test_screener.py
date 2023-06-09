@@ -3,8 +3,8 @@ from unittest.mock import patch
 import lxml
 from dateutil.parser import parse
 
-from finviz.main_func import get_all_news, get_analyst_price_targets
 from finviz.screener import Screener
+from finviz.main_func import get_all_news, get_analyst_price_targets
 
 
 class TestScreener:
@@ -13,7 +13,7 @@ class TestScreener:
     def test_get_screener_data_sequential_requests(self):
         """ Tests that basic Screener example returns correct number of stocks. """
         stock_list = Screener(
-            filters=["sh_curvol_o300", "ta_highlow52w_b0to10h", "ind_stocksonly"]
+            filters=["sec_technology", "sh_float_o20"]
         )
 
         count = 0
@@ -24,12 +24,8 @@ class TestScreener:
 
     def test_screener_stability(self):
         """ Requested in #77: https://github.com/mariostoev/finviz/issues/77 """
-        filters = [
-            "sh_avgvol_o100",  # average daily volume > 100k shares
-            "sh_curvol_o100",  # current daily volume > 100k shares
-            "sh_float_u50",  # floating stocks < 50m shares
-            "sh_price_u3",  # current price is under $3
-        ]
+        filters = ["sec_technology", "sh_float_o20"]
+
         stock_list = Screener(filters=filters, table="Performance")
 
         count = 0
@@ -41,12 +37,7 @@ class TestScreener:
     def test_get_ticker_details_sequential_requests(self):
         """ Tests that `get_ticker_details` method returns correct number of ticker details. """
         stocks = Screener(
-            filters=[
-                "sh_curvol_o300",
-                "ta_highlow52w_b0to10h",
-                "ind_stocksonly",
-                "sh_outstanding_o1000",
-            ]
+            filters=["sec_technology", "sh_float_o20"]
         )
         ticker_details = stocks.get_ticker_details()
 
@@ -61,12 +52,7 @@ class TestScreener:
         """ Tests that `get_charts` method returns correct number of valid charts. """
 
         stocks = Screener(
-            filters=[
-                "sh_curvol_o20000",
-                "ta_highlow52w_b0to10h",
-                "ind_stocksonly",
-                "sh_outstanding_o1000",
-            ]
+            filters=["sec_technology", "sh_float_o20"]
         )
 
         count = 0
