@@ -45,7 +45,6 @@ def get_total_rows(page_content):
     if len(total_element) > 0:
         content = etree.tostring(total_element[0]).decode("utf-8")
         total_number = content.split("/")[1].split()[0]
-
         try:
             return int(total_number)
         except ValueError:
