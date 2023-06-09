@@ -1,9 +1,13 @@
 #!/usr/bin/python3
 
 from API.finvizAPI.finviz.screener import Screener
+from API.finvizAPI import finviz
+from API.finvizAPI.finviz.portfolio import Portfolio
 
 # Get dict of available filters
 # filters dict contains the corresponding filter tags
+
+# print(finviz.get_stock('QQQ'))
 filters = Screener.load_filter_dict()
 some_filters = [filters["PEG"]["Under 1"], filters["Exchange"]["AMEX"]]
 print(some_filters)

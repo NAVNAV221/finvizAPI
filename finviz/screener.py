@@ -5,7 +5,7 @@ from typing import List
 from urllib.parse import parse_qs as urlparse_qs
 from urllib.parse import urlencode, urlparse
 
-import finviz.helper_functions.scraper_functions as scrape
+import API.finvizAPI.finviz.helper_functions.scraper_functions as scrape
 from bs4 import BeautifulSoup
 from finviz.helper_functions.display_functions import create_table_string
 from finviz.helper_functions.error_handling import InvalidTableType, NoResults
