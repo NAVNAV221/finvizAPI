@@ -1,10 +1,11 @@
+import unittest
 from unittest.mock import patch
 
 import lxml
 from dateutil.parser import parse
 
-from finviz.screener import Screener
-from finviz.main_func import get_all_news, get_analyst_price_targets
+from API.finvizAPI.finviz.screener import Screener
+from API.finvizAPI.finviz.main_func import get_all_news, get_analyst_price_targets
 
 
 class TestScreener:
@@ -89,3 +90,7 @@ def test_get_all_news():
     """ Verifies news results are greater than 0. """
     news = get_all_news()
     assert len(news) > 0
+
+
+if __name__ == '__main__':
+    unittest.main()
