@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 
-from API.finvizAPI.finviz.screener import Screener
+from finviz.screener import Screener
 from API.finvizAPI import finviz
 from API.finvizAPI.finviz.portfolio import Portfolio
-
+#
 # Get dict of available filters
 # filters dict contains the corresponding filter tags
 
